@@ -49,8 +49,10 @@ class Alien:
    
        
     def draw(self):
+        if self.isAlive:
             pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 40, 40))
-            if self.isAlive == True:
+
+                
 
 
     def move(self, time):
@@ -101,7 +103,7 @@ while not gameover:
             if event.key == pygame.K_RIGHT:
                 moveright = True
 
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_SPACE:
                 print("pew pew")
                 shoot = True
 
@@ -114,7 +116,9 @@ while not gameover:
             if event.key == pygame.K_RIGHT:
                 print("stop")
                 moveright = False
-
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    shoot = False
 
        
                
@@ -163,7 +167,7 @@ while not gameover:
     pygame.draw.rect(screen, (200, 200, 100), (xpos, 750, 40, 20))
     for i in range (len(armada)):
         armada[i].draw() 
-        Bullet.draw()
+    Bullet.draw()
         
     pygame.display.flip()
     
@@ -171,7 +175,6 @@ while not gameover:
     
 #end game loop
 pygame.quit()  
-
 
 
 
